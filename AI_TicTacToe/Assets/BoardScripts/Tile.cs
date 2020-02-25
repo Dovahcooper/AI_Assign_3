@@ -34,12 +34,14 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        onClickEvent.Invoke();
+        if(!theBoard.Winner)
+            onClickEvent.Invoke();
     }
 
     public void SelectTileX()
     {
-        thisRenderer.material = xMat;
+        if(theBoard.boardMatrix[arrayPos.x, arrayPos.y] == 0)
+            thisRenderer.material = xMat;
         theBoard.SetMatrix(arrayPos.x, arrayPos.y, 1);
     }
 
